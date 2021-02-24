@@ -1,0 +1,156 @@
+#!/bin/bash
+
+ 
+#for gammah in $(seq 0.05 0.05 0.45 )
+
+#do
+
+#cp constant/transportProperties.ori constant/transportProperties
+
+#gammahh=$(./sciNot $gammahh);
+
+#sed -i '/gamma_h/s/2.5e-1/'"$gammahh"'/g' constant/transportProperties 
+
+#./run >> alogs 2>&1
+
+#foamToVTK -allPatches -fields "(a h o ocy b)" >> alogs 2>&1
+
+#rm -r VTK/allPatches/
+#cp constant/transportProperties VTK/
+#mv VTK /media/erick/Erick\ Lopez\ Fisica/RDEchanged/Osteocyte_apoptosis_gammah"$gammahh"
+
+#echo "$(date) gammah"$gammahh""
+
+#./clean  >> alogs 2>&1
+
+#done 
+
+#######################################################################################################################
+#######################################################################################################################
+#######################################################################################################################
+
+
+#for alphao in $(seq 80 80 720)
+
+#do
+
+#cp constant/transportProperties.ori constant/transportProperties
+
+#alphaoo=$(./sciNot $alphao);
+
+#sed -i '/alpha_o/s/4e2/'"$alphaoo"'/g' constant/transportProperties 
+
+#./run >> alogs 2>&1
+
+#foamToVTK -allPatches -fields "(a h o ocy b)" >> alogs 2>&1
+
+#rm -r VTK/allPatches/
+#cp constant/transportProperties VTK/
+#mv VTK /media/erick/Erick\ Lopez\ Fisica/RDEchanged/Osteocyte_apoptosis_alphao"$alphaoo"
+
+#echo "$(date) alphao"$alphaoo""
+
+#./clean  >> alogs 2>&1
+
+#done 
+
+#######################################################################################################################
+#######################################################################################################################
+#######################################################################################################################
+
+
+
+for etaap in $(seq 0.00000002 0.000000005 0.0000002) 
+
+do
+
+cp constant/transportProperties.ori constant/transportProperties
+
+etaapp=$(./sciNot $etaap);
+
+sed -i '/etaap/s/5e-8/'"$etaapp"'/g' constant/transportProperties 
+sed -i '/eta/s/1e-7/2e-7/g' constant/transportProperties 
+
+./run >> alogs 2>&1
+
+foamToVTK -latestTime -allPatches -fields "(a h o ocy b)" >> alogs 2>&1
+
+rm -r VTK/allPatches/
+cp log.RDE_DM_osteocyte_apop VTK/
+cp constant/transportProperties VTK/
+mv VTK/ Osteocyte_apoptosis_etaap_con_craneosinostosis_2e-7etaGRAPH"$etaapp"/
+mv Osteocyte_apoptosis_etaap_con_craneosinostosis_2e-7etaGRAPH"$etaapp"/  /media/erick/Erick\ Lopez\ Fisica/RDEchanged/
+
+
+echo "$(date) etaap"$etaapp""
+
+./clean  >> alogs 2>&1
+
+done 
+
+#######################################################################################################################
+#######################################################################################################################
+#######################################################################################################################
+
+#for eta in 0.00000015 0.0000002
+
+#do
+
+#cp constant/transportProperties.ori constant/transportProperties
+
+#etaa=$(./sciNot $eta);
+
+#sed -i '/eta/s/1e-7/'"$etaa"'/g' constant/transportProperties 
+
+#./run >> alogs 2>&1
+
+#foamToVTK -allPatches -fields "(a h o ocy b)" >> alogs 2>&1
+
+#rm -r VTK/allPatches/
+#cp log.RDE_DM_osteocyte_apop VTK/
+#cp constant/transportProperties VTK/
+#mv VTK/ Osteocyte_apoptosis_eta"$etaa"/
+#mv Osteocyte_apoptosis_eta"$etaa"/  /media/erick/Erick\ Lopez\ Fisica/RDEchanged/
+
+#echo "$(date) eta"$etaa""
+
+#./clean  >> alogs 2>&1
+
+#done 
+
+#######################################################################################################################
+#######################################################################################################################
+#######################################################################################################################
+
+
+
+#for bS in 0.1 0.01 10 100 
+
+#do
+
+#cp constant/transportProperties.ori constant/transportProperties
+
+#bSS=$(./sciNot $bS);
+
+#sed -i '/b_s/s/1.0/'"$bSS"'/g' constant/transportProperties 
+
+#./run >> alogs 2>&1
+
+#foamToVTK -allPatches -fields "(a h o ocy b)" >> alogs 2>&1
+
+#rm -r VTK/allPatches/
+#cp log.RDE_DM_osteocyte_apop VTK/
+#cp constant/transportProperties VTK/
+#mv VTK/ Osteocyte_apoptosis_b_s"$bSS"/
+#mv Osteocyte_apoptosis_eta"$bSS"/  /media/erick/Erick\ Lopez\ Fisica/RDEchanged/
+
+#echo "$(date) b_s"$bSS""
+
+#./clean  >> alogs 2>&1
+
+#done 
+
+#######################################################################################################################
+#######################################################################################################################
+#######################################################################################################################
+
